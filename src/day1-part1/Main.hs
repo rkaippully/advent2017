@@ -8,4 +8,4 @@ main = do
   let l = length s
       s' = cycle s
       s'' = tail s'
-  print $ sum $ map (digitToInt . fst) $ filter (\(a, b) -> a == b) $ take l $ zip s' s''
+  print $ sum $ map (digitToInt . fst) $ filter (uncurry (==)) $ take l $ zip s' s''
