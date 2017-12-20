@@ -1,0 +1,26 @@
+name:                advent2017
+version:             0.1.0
+github:              "rkaippully/advent2017"
+license:             BSD3
+author:              "Raghu Kaippully"
+maintainer:          "rkaippully@gmail.com"
+copyright:           "Copyright (c) Raghu Kaippully"
+
+extra-source-files:
+  - README.md
+
+synopsis:            My solutions for Advent of Code 2017
+
+description:         Please see the README on Github at <https://github.com/rkaippully/advent2017#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+
+executables:
+  day1:
+    main:                Main.hs
+    source-dirs:         src/day1
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
