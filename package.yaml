@@ -13,18 +13,22 @@ synopsis:            My solutions for Advent of Code 2017
 description:         Please see the README on Github at <https://github.com/rkaippully/advent2017#readme>
 ghc-options:
   - -Wall
+  - -fwarn-missing-import-lists
   - -threaded
   - -rtsopts
   - -with-rtsopts=-N
 
 dependencies:
-- base >= 4.7 && < 5
+  - base >= 4.7 && < 5
+  - optparse-applicative
+  - bytestring
+  - directory
 
 executables:
-  day1-part1:
+  advent2017:
     main:                Main.hs
-    source-dirs:         src/day1-part1
-
-  day1-part2:
-    main:                Main.hs
-    source-dirs:         src/day1-part2
+    source-dirs:         src
+    other-modules:
+      - Advent
+      - Advent.Types
+      - Advent.Day1
