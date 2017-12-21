@@ -1,6 +1,7 @@
 module Advent where
 
 import Advent.Day1 (day1part1, day1part2)
+import Advent.Day2 (day2part1, day2part2)
 
 import Advent.Types (Day(AllDays), Part(AllParts, Part1, Part2), Problem(name, run))
 import Control.Monad (forM_, when)
@@ -12,7 +13,8 @@ import System.IO (IOMode(ReadMode), withFile)
 
 
 allProblems :: [Problem]
-allProblems = [day1part1, day1part2]
+allProblems = [day1part1, day1part2
+              , day2part1, day2part2]
 
 filterIndex :: (Int -> Bool) -> [a] -> [a]
 filterIndex _ [] = []

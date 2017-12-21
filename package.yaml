@@ -32,3 +32,4 @@ executables:
       - Advent
       - Advent.Types
       - Advent.Day1
+      - Advent.Day2

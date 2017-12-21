@@ -4,6 +4,7 @@ import Data.ByteString.Lazy.Char8 (ByteString)
 
 data Day = AllDays
          | Day1
+         | Day2
          deriving (Show, Enum, Bounded)
 
 data Part = AllParts
