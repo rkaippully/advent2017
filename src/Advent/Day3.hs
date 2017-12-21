@@ -32,13 +32,10 @@ day3part1 = Problem "day3part1" $ \s ->
     BS.pack $ show $ manhattanDistance (coordinates!!(n - 1)) (0, 0)
 
 sums :: [Int]
-sums = 1 : genSums 1
+sums = 1 : map sumAt [1..]
   where
-    genSums :: Int -> [Int]
-    genSums idx = sumOf idx : genSums (idx + 1)
-
-    sumOf :: Int -> Int
-    sumOf idx = sum $ map snd $ filter (isAdjacent (coordinates!!idx)) $ zip (take idx coordinates) sums
+    sumAt :: Int -> Int
+    sumAt idx = sum $ map snd $ filter (isAdjacent (coordinates!!idx)) $ zip (take idx coordinates) sums
 
     isAdjacent :: Coord -> (Coord, a) -> Bool
     isAdjacent (x1, y1) ((x2, y2), _) = abs (x2 - x1) <= 1 && abs (y2 - y1) <= 1
