@@ -1,4 +1,4 @@
-module Advent.Day1 where
+module Advent.Day1 (day1part1, day1part2) where
 
 import           Advent.Types (Problem(Problem))
 import qualified Data.ByteString.Lazy.Char8 as BS

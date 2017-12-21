@@ -1,19 +1,23 @@
-module Advent.Day2 where
+module Advent.Day2 (day2part1, day2part2) where
 
 import           Advent.Types (Problem(Problem))
 import qualified Data.ByteString.Lazy.Char8 as BS
-import           Data.Char (isSpace)
+import           Data.List (tails, sort)
 
-largestAndSmallest :: [Int] -> (Int, Int)
-largestAndSmallest xs = foldr (\x (l, s) -> (if x > l then x else l, if x < s then x else s)) (head xs, head xs) (tail xs)
 
-day2part1 :: Problem
-day2part1 = Problem "day2part1" $ \s ->
+solve :: ([Int] -> Int) -> BS.ByteString -> BS.ByteString
+solve f s =
   let
-    toRow line = read . BS.unpack <$> BS.groupBy (\_ c -> isSpace c) line
+    toRow line = read . BS.unpack <$> BS.words line
     rows = map toRow (BS.lines s)
   in
-    BS.pack $ show $ sum $ map (uncurry (-) . largestAndSmallest) rows
+    BS.pack $ show $ sum $ map f rows
+
+day2part1 :: Problem
+day2part1 = Problem "day2part1" $ solve (\xs -> maximum xs - minimum xs)
 
 day2part2 :: Problem
-day2part2 = Problem "day2part2" undefined
+day2part2 = Problem "day2part2" $ solve evenlyDivisible
+  where
+    evenlyDivisible :: [Int] -> Int
+    evenlyDivisible xs = head [d | (y:ys) <- tails (sort xs), (d, 0) <- (`divMod` y) <$> ys]
