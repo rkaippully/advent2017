@@ -31,6 +31,8 @@ executables:
     other-modules:
       - Advent
       - Advent.Types
+      - Advent.Util
       - Advent.Day1
       - Advent.Day2
       - Advent.Day3
+      - Advent.Day4

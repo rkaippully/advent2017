@@ -1,17 +1,19 @@
 module Advent.Day1 (day1part1, day1part2) where
 
 import           Advent.Types (Problem(Problem))
-import qualified Data.ByteString.Lazy.Char8 as BS
+import           Advent.Util (toByteString)
+import qualified Data.ByteString.Char8 as BS
+import qualified Data.ByteString.Lazy.Char8 as BSL
 import           Data.Char (digitToInt)
 import           Data.Int (Int64)
 
 solve :: (Int64 -> Int64) -> BS.ByteString -> BS.ByteString
 solve dropper s =
   let
-    l = BS.length s
-    s' = BS.take l $ BS.drop (dropper l) $ BS.cycle s
+    l = fromIntegral $ BS.length s
+    s' = BSL.take l $ BSL.drop (dropper l) $ BSL.cycle $ BSL.fromStrict s
   in
-    BS.pack $ show $ sum $ map (digitToInt . fst) $ filter (uncurry (==)) $ BS.zip s s'
+    toByteString $ sum $ map (digitToInt . fst) $ filter (uncurry (==)) $ BSL.zip (BSL.fromStrict s) s'
 
 day1part1 :: Problem
 day1part1 = Problem "day1part1" $ solve (const 1)

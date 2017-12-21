@@ -1,7 +1,7 @@
 module Advent.Day3 (day3part1, day3part2) where
 
 import           Advent.Types (Problem(Problem))
-import qualified Data.ByteString.Lazy.Char8 as BS
+import           Advent.Util (toByteString, fromByteString)
 
 data Side = SRight | STop | SLeft | SBottom
   deriving (Eq)
@@ -27,9 +27,9 @@ manhattanDistance (x1, y1) (x2, y2) = abs (x2 - x1) + abs (y2 - y1)
 day3part1 :: Problem
 day3part1 = Problem "day3part1" $ \s ->
   let
-    n = read $ BS.unpack s
+    n = fromByteString s
   in
-    BS.pack $ show $ manhattanDistance (coordinates!!(n - 1)) (0, 0)
+    toByteString $ manhattanDistance (coordinates!!(n - 1)) (0, 0)
 
 sums :: [Int]
 sums = 1 : map sumAt [1..]
@@ -43,6 +43,6 @@ sums = 1 : map sumAt [1..]
 day3part2 :: Problem
 day3part2 = Problem "day3part2" $ \s ->
   let
-    n = read $ BS.unpack s
+    n = fromByteString s
   in
-    BS.pack $ show $ head $ dropWhile (<= n) sums
+    toByteString $ head $ dropWhile (<= n) sums

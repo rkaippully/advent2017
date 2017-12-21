@@ -1,11 +1,12 @@
 module Advent.Types where
 
-import Data.ByteString.Lazy.Char8 (ByteString)
+import Data.ByteString.Char8 (ByteString)
 
 data Day = AllDays
          | Day1
          | Day2
          | Day3
+         | Day4
          deriving (Show, Enum, Bounded)
 
 data Part = AllParts

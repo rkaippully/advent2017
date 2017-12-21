@@ -3,10 +3,11 @@ module Advent where
 import Advent.Day1 (day1part1, day1part2)
 import Advent.Day2 (day2part1, day2part2)
 import Advent.Day3 (day3part1, day3part2)
+import Advent.Day4 (day4part1, day4part2)
 
 import Advent.Types (Day(AllDays), Part(AllParts, Part1, Part2), Problem(name, run))
 import Control.Monad (forM_, when)
-import Data.ByteString.Lazy.Char8 (hGetContents, unpack)
+import Data.ByteString.Char8 (hGetContents, unpack)
 import Data.List (isSuffixOf)
 import Data.Semigroup ((<>))
 import System.Directory (listDirectory)
@@ -16,7 +17,8 @@ import System.IO (IOMode(ReadMode), withFile)
 allProblems :: [Problem]
 allProblems = [day1part1, day1part2
               , day2part1, day2part2
-              , day3part1, day3part2]
+              , day3part1, day3part2
+              , day4part1, day4part2]
 
 filterIndex :: (Int -> Bool) -> [a] -> [a]
 filterIndex _ [] = []
