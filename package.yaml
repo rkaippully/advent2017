@@ -23,7 +23,6 @@ dependencies:
   - optparse-applicative
   - bytestring
   - directory
-  - vector
 
 executables:
   advent2017:
