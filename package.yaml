@@ -12,6 +12,7 @@ extra-source-files:
 synopsis:            My solutions for Advent of Code 2017
 description:         Please see the README on Github at <https://github.com/rkaippully/advent2017#readme>
 ghc-options:
+  - -O2
   - -Wall
   - -fwarn-missing-import-lists
   - -threaded

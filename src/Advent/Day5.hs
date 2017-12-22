@@ -1,8 +1,9 @@
 module Advent.Day5 (day5part1, day5part2) where
 
 import           Advent.Types (Problem(Problem))
-import           Advent.Util (toByteString, fromByteString, feed)
+import           Advent.Util (toByteString, fromByteString)
 import qualified Data.ByteString.Char8 as BS
+import           Data.List (foldl')
 
 data Instructions a = Instructions [a] a [a]
 
@@ -22,8 +23,9 @@ runProgram insns updater = go insns 0
       let
         f = if x < 0 then left else right
         fns = replicate (abs x) f
+        ins' = return $ Instructions ls (updater x) rs
       in
-        case feed fns (Instructions ls (updater x) rs) of
+        case foldl' (>>=) ins' fns of
           Just insns' -> go insns' (count + 1)
           Nothing     -> (ins, count + 1)
 
