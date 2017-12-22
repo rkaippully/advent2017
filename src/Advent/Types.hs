@@ -7,6 +7,7 @@ data Day = AllDays
          | Day2
          | Day3
          | Day4
+         | Day5
          deriving (Show, Enum, Bounded)
 
 data Part = AllParts
