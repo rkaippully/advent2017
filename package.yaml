@@ -24,6 +24,7 @@ dependencies:
   - optparse-applicative
   - bytestring
   - directory
+  - unordered-containers
 
 executables:
   advent2017:
@@ -38,3 +39,4 @@ executables:
       - Advent.Day3
       - Advent.Day4
       - Advent.Day5
+      - Advent.Day6
