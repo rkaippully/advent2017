@@ -6,7 +6,7 @@ import           Control.Monad.State (State, execState, when, get, modify)
 import qualified Data.ByteString.Char8 as BS
 import           Data.Char (isSpace)
 import           Data.HashMap.Lazy as HM (HashMap, empty, lookup, insert)
-import           Data.Maybe (fromMaybe)
+import           Data.Maybe (fromMaybe, fromJust)
 import           Text.Parsec (Parsec, runParser, many1, skipMany1, string)
 import           Text.Parsec.Char (space, satisfy)
 
@@ -81,18 +81,21 @@ parseLine str =
         "!=" -> return OprNE
         _    -> fail $ "Invalid operator: " ++ s
 
-newtype CPUState = CPUState (HashMap RegName Int)
+data CPUState = CPUState {
+  registers  :: HashMap RegName Int
+  , maxValue :: Maybe Int }
   deriving (Show)
 
 getRegister :: RegName -> State CPUState Int
-getRegister reg = do
-  CPUState regs <- get
-  return $ fromMaybe 0 $ HM.lookup reg regs
+getRegister reg = (fromMaybe 0 . HM.lookup reg . registers) <$> get
 
 modifyRegister :: RegName -> (Int -> Int) -> State CPUState ()
 modifyRegister reg f = do
   v <- f <$> getRegister reg
-  modify (\(CPUState s) -> CPUState $ HM.insert reg v s)
+  modify (\s -> CPUState {registers = HM.insert reg v (registers s)
+                         , maxValue = case maxValue s of
+                                        Nothing -> Just v
+                                        Just x  -> Just $ max x v})
 
 evalCondition :: Condition -> State CPUState Bool
 evalCondition (Condition reg opr amt) = do
@@ -124,9 +127,14 @@ day8part1 :: Problem
 day8part1 = Problem "day8part1" $ \s ->
   let
     insns = (runInstruction . parseLine) <$> BS.lines s
-    CPUState state = execState (sequence insns) (CPUState HM.empty)
+    state = execState (sequence insns) CPUState {registers = HM.empty, maxValue = Nothing}
   in
-    toByteString $ maximum state
+    toByteString $ maximum $ registers state
 
 day8part2 :: Problem
-day8part2 = Problem "day8part2" undefined
+day8part2 = Problem "day8part2" $ \s ->
+  let
+    insns = (runInstruction . parseLine) <$> BS.lines s
+    state = execState (sequence insns) CPUState {registers = HM.empty, maxValue = Nothing}
+  in
+    toByteString $ fromJust $ maxValue state
