@@ -1,5 +1,3 @@
-{-# LANGUAGE OverloadedStrings #-}
-
 module Advent.Day7 (day7part1, day7part2) where
 
 import           Advent.Types (Problem(Problem))

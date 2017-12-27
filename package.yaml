@@ -27,6 +27,7 @@ dependencies:
   - unordered-containers
   - parsec
   - containers
+  - mtl
 
 executables:
   advent2017:
@@ -43,3 +44,4 @@ executables:
       - Advent.Day5
       - Advent.Day6
       - Advent.Day7
+      - Advent.Day8
