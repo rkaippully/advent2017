@@ -45,3 +45,4 @@ executables:
       - Advent.Day6
       - Advent.Day7
       - Advent.Day8
+      - Advent.Day9
