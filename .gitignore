@@ -2,3 +2,4 @@
 advent2017.cabal
 *~
 /*.prof
+.DS_Store
