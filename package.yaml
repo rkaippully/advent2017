@@ -47,3 +47,4 @@ executables:
       - Advent.Day8
       - Advent.Day9
       - Advent.Day10
+      - Advent.Day11

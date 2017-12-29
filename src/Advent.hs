@@ -10,6 +10,7 @@ import Advent.Day7 (day7part1, day7part2)
 import Advent.Day8 (day8part1, day8part2)
 import Advent.Day9 (day9part1, day9part2)
 import Advent.Day10 (day10part1, day10part2)
+import Advent.Day11 (day11part1, day11part2)
 
 import Advent.Types (Day(AllDays), Part(AllParts, Part1, Part2), Problem(name, run))
 import Control.Monad (forM_, when)
@@ -30,7 +31,9 @@ allProblems = [day1part1, day1part2
               , day7part1, day7part2
               , day8part1, day8part2
               , day9part1, day9part2
-              , day10part1, day10part2]
+              , day10part1, day10part2
+              , day11part1, day11part2
+              ]
 
 filterIndex :: (Int -> Bool) -> [a] -> [a]
 filterIndex _ [] = []
