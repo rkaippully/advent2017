@@ -28,6 +28,7 @@ dependencies:
   - parsec
   - containers
   - mtl
+  - hashable
 
 executables:
   advent2017:
@@ -48,3 +49,4 @@ executables:
       - Advent.Day9
       - Advent.Day10
       - Advent.Day11
+      - Advent.Day12
