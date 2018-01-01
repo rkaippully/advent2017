@@ -1,4 +1,4 @@
-module Advent.Day7 (day7part1, day7part2) where
+module Advent.Day07 (day07part1, day07part2) where
 
 import           Advent.Types (Problem(Problem))
 import           Advent.Util (toByteString)
@@ -63,14 +63,14 @@ progTree s = mkTree $ toMap $ parseLine <$> BS.lines s
     mkTree :: HashMap ProgName (ProgNode, [ProgName]) -> Maybe (Tree ProgNode)
     mkTree m = unfoldTree (\k -> fromJust $ HM.lookup k m) <$> rootKey m
 
-day7part1 :: Problem
-day7part1 = Problem "day7part1" $ \s ->
+day07part1 :: Problem
+day07part1 = Problem "day07part1" $ \s ->
   case progTree s of
     Nothing -> error "Empty tree"
     Just x  -> fst $ rootLabel x
 
-day7part2 :: Problem
-day7part2 = Problem "day7part2" $ \s ->
+day07part2 :: Problem
+day07part2 = Problem "day07part2" $ \s ->
   case progTree s of
     Nothing   -> error "Empty tree"
     Just tree -> toByteString $ fromJust $ balance $ treeSum tree

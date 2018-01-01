@@ -1,4 +1,4 @@
-module Advent.Day3 (day3part1, day3part2) where
+module Advent.Day03 (day03part1, day03part2) where
 
 import           Advent.Types (Problem(Problem))
 import           Advent.Util (toByteString, fromByteString)
@@ -24,8 +24,8 @@ coordinates = (0, 0) : gen SRight (1, 0) 1
 manhattanDistance :: Coord -> Coord -> Int
 manhattanDistance (x1, y1) (x2, y2) = abs (x2 - x1) + abs (y2 - y1)
 
-day3part1 :: Problem
-day3part1 = Problem "day3part1" $ \s ->
+day03part1 :: Problem
+day03part1 = Problem "day03part1" $ \s ->
   let
     n = fromByteString s
   in
@@ -40,8 +40,8 @@ sums = 1 : map sumAt [1..]
     isAdjacent :: Coord -> (Coord, a) -> Bool
     isAdjacent (x1, y1) ((x2, y2), _) = abs (x2 - x1) <= 1 && abs (y2 - y1) <= 1
 
-day3part2 :: Problem
-day3part2 = Problem "day3part2" $ \s ->
+day03part2 :: Problem
+day03part2 = Problem "day03part2" $ \s ->
   let
     n = fromByteString s
   in

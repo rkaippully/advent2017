@@ -1,4 +1,4 @@
-module Advent.Day1 (day1part1, day1part2) where
+module Advent.Day01 (day01part1, day01part2) where
 
 import           Advent.Types (Problem(Problem))
 import           Advent.Util (toByteString)
@@ -15,8 +15,8 @@ solve dropper s =
   in
     toByteString $ sum $ map (digitToInt . fst) $ filter (uncurry (==)) $ BSL.zip (BSL.fromStrict s) s'
 
-day1part1 :: Problem
-day1part1 = Problem "day1part1" $ solve (const 1)
+day01part1 :: Problem
+day01part1 = Problem "day01part1" $ solve (const 1)
 
-day1part2 :: Problem
-day1part2 = Problem "day1part2" (solve (`div` 2))
+day01part2 :: Problem
+day01part2 = Problem "day01part2" (solve (`div` 2))

@@ -1,4 +1,4 @@
-module Advent.Day2 (day2part1, day2part2) where
+module Advent.Day02 (day02part1, day02part2) where
 
 import           Advent.Types (Problem(Problem))
 import qualified Data.ByteString.Char8 as BS
@@ -13,11 +13,11 @@ solve f s =
   in
     toByteString $ sum $ map f rows
 
-day2part1 :: Problem
-day2part1 = Problem "day2part1" $ solve (\xs -> maximum xs - minimum xs)
+day02part1 :: Problem
+day02part1 = Problem "day02part1" $ solve (\xs -> maximum xs - minimum xs)
 
-day2part2 :: Problem
-day2part2 = Problem "day2part2" $ solve evenlyDivisible
+day02part2 :: Problem
+day02part2 = Problem "day02part2" $ solve evenlyDivisible
   where
     evenlyDivisible :: [Int] -> Int
     evenlyDivisible xs = head [d | (y:ys) <- tails (sort xs), (d, 0) <- (`divMod` y) <$> ys]

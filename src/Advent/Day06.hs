@@ -1,4 +1,4 @@
-module Advent.Day6 (day6part1, day6part2) where
+module Advent.Day06 (day06part1, day06part2) where
 
 import           Advent.Types (Problem(Problem))
 import           Advent.Util (toByteString, fromByteString, rotateLeft, rotateRight)
@@ -55,15 +55,15 @@ allocs blocks =
   in
     scanl checkRepeat start $ iterate (redistribute len) blocks
 
-day6part1 :: Problem
-day6part1 = Problem "day6part1" $ \s ->
+day06part1 :: Problem
+day06part1 = Problem "day06part1" $ \s ->
   let
     blocks = map fromByteString $ BS.words s
   in
     toByteString $ length (takeWhile isValid $ allocs blocks) - 1
 
-day6part2 :: Problem
-day6part2 = Problem "day6part2" $ \s ->
+day06part2 :: Problem
+day06part2 = Problem "day06part2" $ \s ->
   let
     blocks = map fromByteString $ BS.words s
     invalid = head $ dropWhile isValid $ allocs blocks

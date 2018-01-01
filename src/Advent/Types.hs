@@ -3,15 +3,15 @@ module Advent.Types where
 import Data.ByteString.Char8 (ByteString)
 
 data Day = AllDays
-         | Day1
-         | Day2
-         | Day3
-         | Day4
-         | Day5
-         | Day6
-         | Day7
-         | Day8
-         | Day9
+         | Day01
+         | Day02
+         | Day03
+         | Day04
+         | Day05
+         | Day06
+         | Day07
+         | Day08
+         | Day09
          | Day10
          | Day11
          | Day12

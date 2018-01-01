@@ -1,4 +1,4 @@
-module Advent.Day8 (day8part1, day8part2) where
+module Advent.Day08 (day08part1, day08part2) where
 
 import           Advent.Types (Problem(Problem))
 import           Advent.Util (toByteString)
@@ -123,16 +123,16 @@ runInstruction insn = do
   c <- evalCondition (insnCondition insn)
   when c $ doAction insn
 
-day8part1 :: Problem
-day8part1 = Problem "day8part1" $ \s ->
+day08part1 :: Problem
+day08part1 = Problem "day08part1" $ \s ->
   let
     insns = (runInstruction . parseLine) <$> BS.lines s
     state = execState (sequence insns) CPUState {registers = HM.empty, maxValue = Nothing}
   in
     toByteString $ maximum $ registers state
 
-day8part2 :: Problem
-day8part2 = Problem "day8part2" $ \s ->
+day08part2 :: Problem
+day08part2 = Problem "day08part2" $ \s ->
   let
     insns = (runInstruction . parseLine) <$> BS.lines s
     state = execState (sequence insns) CPUState {registers = HM.empty, maxValue = Nothing}

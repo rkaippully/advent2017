@@ -1,17 +1,18 @@
 module Advent where
 
-import Advent.Day1 (day1part1, day1part2)
-import Advent.Day2 (day2part1, day2part2)
-import Advent.Day3 (day3part1, day3part2)
-import Advent.Day4 (day4part1, day4part2)
-import Advent.Day5 (day5part1, day5part2)
-import Advent.Day6 (day6part1, day6part2)
-import Advent.Day7 (day7part1, day7part2)
-import Advent.Day8 (day8part1, day8part2)
-import Advent.Day9 (day9part1, day9part2)
+import Advent.Day01 (day01part1, day01part2)
+import Advent.Day02 (day02part1, day02part2)
+import Advent.Day03 (day03part1, day03part2)
+import Advent.Day04 (day04part1, day04part2)
+import Advent.Day05 (day05part1, day05part2)
+import Advent.Day06 (day06part1, day06part2)
+import Advent.Day07 (day07part1, day07part2)
+import Advent.Day08 (day08part1, day08part2)
+import Advent.Day09 (day09part1, day09part2)
 import Advent.Day10 (day10part1, day10part2)
 import Advent.Day11 (day11part1, day11part2)
 import Advent.Day12 (day12part1, day12part2)
+import Advent.Day13 (day13part1, day13part2)
 
 import Advent.Types (Day(AllDays), Part(AllParts, Part1, Part2), Problem(name, run))
 import Control.Monad (forM_, when)
@@ -23,18 +24,19 @@ import System.IO (IOMode(ReadMode), withFile)
 
 
 allProblems :: [Problem]
-allProblems = [day1part1, day1part2
-              , day2part1, day2part2
-              , day3part1, day3part2
-              , day4part1, day4part2
-              , day5part1, day5part2
-              , day6part1, day6part2
-              , day7part1, day7part2
-              , day8part1, day8part2
-              , day9part1, day9part2
+allProblems = [day01part1, day01part2
+              , day02part1, day02part2
+              , day03part1, day03part2
+              , day04part1, day04part2
+              , day05part1, day05part2
+              , day06part1, day06part2
+              , day07part1, day07part2
+              , day08part1, day08part2
+              , day09part1, day09part2
               , day10part1, day10part2
               , day11part1, day11part2
               , day12part1, day12part2
+              , day13part1, day13part2
               ]
 
 filterIndex :: (Int -> Bool) -> [a] -> [a]

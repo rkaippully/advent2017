@@ -38,15 +38,16 @@ executables:
       - Advent
       - Advent.Types
       - Advent.Util
-      - Advent.Day1
-      - Advent.Day2
-      - Advent.Day3
-      - Advent.Day4
-      - Advent.Day5
-      - Advent.Day6
-      - Advent.Day7
-      - Advent.Day8
-      - Advent.Day9
+      - Advent.Day01
+      - Advent.Day02
+      - Advent.Day03
+      - Advent.Day04
+      - Advent.Day05
+      - Advent.Day06
+      - Advent.Day07
+      - Advent.Day08
+      - Advent.Day09
       - Advent.Day10
       - Advent.Day11
       - Advent.Day12
+      - Advent.Day13

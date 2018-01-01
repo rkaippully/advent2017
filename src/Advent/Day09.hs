@@ -1,4 +1,4 @@
-module Advent.Day9 (day9part1, day9part2) where
+module Advent.Day09 (day09part1, day09part2) where
 
 import           Advent.Types (Problem(Problem))
 import           Advent.Util (toByteString)
@@ -45,15 +45,15 @@ parseInput str =
     normalChar :: Parsec BS.ByteString () GarbageChar
     normalChar = noneOf ">" >> return NormalChar
 
-day9part1 :: Problem
-day9part1 = Problem "day9part1" $
+day09part1 :: Problem
+day09part1 = Problem "day09part1" $
   toByteString . fst . foldl' f (0, 1) . levels . parseInput
   where
     f :: (Int, Int) -> [Element] -> (Int, Int)
     f (total, lvl) xs = (total + length (filter (== Group) xs) * lvl, lvl + 1)
 
-day9part2 :: Problem
-day9part2 = Problem "day9part2" $
+day09part2 :: Problem
+day09part2 = Problem "day09part2" $
   toByteString . foldl' f 0 . flatten . parseInput
   where
     f :: Int -> Element -> Int

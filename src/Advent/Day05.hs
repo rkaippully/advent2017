@@ -1,4 +1,4 @@
-module Advent.Day5 (day5part1, day5part2) where
+module Advent.Day05 (day05part1, day05part2) where
 
 import           Advent.Types (Problem(Problem))
 import           Advent.Util (toByteString, fromByteString)
@@ -36,10 +36,10 @@ mkInsns s =
   in
     Instructions [] (head ns) (tail ns)
 
-day5part1 :: Problem
-day5part1 = Problem "day5part1" $ \s ->
+day05part1 :: Problem
+day05part1 = Problem "day05part1" $ \s ->
   toByteString $ snd $ runProgram (mkInsns s) (+ 1)
 
-day5part2 :: Problem
-day5part2 = Problem "day5part2" $ \s ->
+day05part2 :: Problem
+day05part2 = Problem "day05part2" $ \s ->
   toByteString $ snd $ runProgram (mkInsns s) (\offset -> if offset >= 3 then offset - 1 else offset + 1)
