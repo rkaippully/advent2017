@@ -29,6 +29,7 @@ dependencies:
   - containers
   - mtl
   - hashable
+  - ilist
 
 executables:
   advent2017:
@@ -38,6 +39,7 @@ executables:
       - Advent
       - Advent.Types
       - Advent.Util
+      - Advent.KnotHash
       - Advent.Day01
       - Advent.Day02
       - Advent.Day03
@@ -51,3 +53,4 @@ executables:
       - Advent.Day11
       - Advent.Day12
       - Advent.Day13
+      - Advent.Day14
