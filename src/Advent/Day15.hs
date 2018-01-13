@@ -21,8 +21,14 @@ generatorA = generator 16807
 generatorB :: Generator
 generatorB = generator 48271
 
-judge :: [Word64] -> [Word64] -> Int
-judge seqA seqB = length $ filter match $ take 40000000 $ zip seqA seqB
+generatorA' :: Generator
+generatorA' = filter (\x -> x `mod` 4 == 0) . generatorA
+
+generatorB' :: Generator
+generatorB' = filter (\x -> x `mod` 8 == 0) . generatorB
+
+judge :: Int -> [Word64] -> [Word64] -> Int
+judge sample seqA seqB = length $ filter match $ take sample $ zip seqA seqB
   where
     match :: (Word64, Word64) -> Bool
     match (x, y) = x .&. 65535 == y .&. 65535
@@ -32,7 +38,12 @@ day15part1 = Problem "day15part1" $ \s ->
   let
     [startA, startB] = fromByteString <$> BS.words s
   in
-    toByteString $ judge (generatorA startA) (generatorB startB)
+    toByteString $ judge 40000000 (generatorA startA) (generatorB startB)
 
 day15part2 :: Problem
-day15part2 = Problem "day15part2" undefined
+day15part2 = Problem "day15part2" $ \s ->
+  let
+    [startA, startB] = fromByteString <$> BS.words s
+  in
+    toByteString $ judge 5000000 (generatorA' startA) (generatorB' startB)
+
